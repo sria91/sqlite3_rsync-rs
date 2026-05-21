@@ -27,7 +27,7 @@ fn main() {
         .map(String::as_str)
         .collect();
 
-    minimal_logger::init(minimal_logger::MinimalLoggerConfig::from_env())
+    let _guard = minimal_logger::init(minimal_logger::MinimalLoggerConfig::from_env())
         .expect("failed to initialise logger");
 
     if positional.len() != 2 {
@@ -45,6 +45,4 @@ fn main() {
             std::process::exit(1);
         }
     }
-
-    minimal_logger::shutdown();
 }

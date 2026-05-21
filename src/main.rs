@@ -404,7 +404,7 @@ fn main() {
         // SAFETY: called at program start, before any threads are spawned.
         unsafe { std::env::set_var("RUST_LOG", default_level) };
     }
-    minimal_logger::init(minimal_logger::MinimalLoggerConfig::from_env())
+    let _guard = minimal_logger::init(minimal_logger::MinimalLoggerConfig::from_env())
         .expect("failed to initialise logger");
 
     let mut ctx = SqliteRsync::default();
